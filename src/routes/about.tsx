@@ -55,8 +55,8 @@ function About() {
       <section className="pb-20 sm:pb-28 bg-background">
         <div className="max-w-6xl mx-auto px-5 sm:px-8 grid md:grid-cols-2 gap-6">
           {[
-            { label: "Mission", title: "Empower brands and people with creative craft.", body: "We exist to translate ideas into compelling visuals, motion, and digital experiences that grow businesses and elevate stories." },
-            { label: "Vision", title: "Be Africa's most trusted multimedia studio.", body: "A studio where emerging technology and human craft meet to set a new standard for creative production on the continent." },
+            { label: "Mission", title: "The highest quality of customer service.", body: "Dedication to the highest quality of customer service delivered with a sense of warmth and friendliness — to create the most compelling company of the 21st century." },
+            { label: "Founder", title: "Rawa Olabode Wilson — C.E.O.", body: "A passionate photographer with a strong interest in journalism, trained at the Nigeria Institute of Journalism (NIJ), Lagos. He further sharpened his craft during industrial training at a reputable media organization in Accra, Ghana — gaining hands-on experience with modern equipment that shapes the studio's standard today." },
           ].map((c, i) => (
             <motion.div key={c.label} initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-10 rounded-3xl bg-[var(--ink)] text-white relative overflow-hidden">
               <div className="absolute -top-20 -right-20 w-60 h-60 bg-[var(--brand)] rounded-full opacity-30 blur-3xl" />
