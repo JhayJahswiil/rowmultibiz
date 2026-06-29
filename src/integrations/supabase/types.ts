@@ -82,6 +82,7 @@ export type Database = {
           category: string
           id: string
           storage_path: string | null
+          subcategory: string | null
           title: string
           uploaded_at: string
           url: string
@@ -90,6 +91,7 @@ export type Database = {
           category: string
           id?: string
           storage_path?: string | null
+          subcategory?: string | null
           title: string
           uploaded_at?: string
           url: string
@@ -98,6 +100,7 @@ export type Database = {
           category?: string
           id?: string
           storage_path?: string | null
+          subcategory?: string | null
           title?: string
           uploaded_at?: string
           url?: string
