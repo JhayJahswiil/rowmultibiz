@@ -157,7 +157,7 @@ function AdminPanel() {
                     <div className="p-4 flex items-center justify-between gap-3">
                       <div className="min-w-0">
                         <p className="font-semibold truncate">{it.title}</p>
-                        <p className="text-xs text-[var(--brand)] uppercase tracking-wider">{it.category}</p>
+                        <p className="text-xs text-[var(--brand)] uppercase tracking-wider">{it.category}{it.subcategory ? ` · ${it.subcategory}` : ""}</p>
                       </div>
                       <button onClick={() => onDelete(it)} aria-label="Delete" className="p-2 rounded-lg text-muted-foreground hover:text-[var(--brand)] hover:bg-secondary transition">
                         <Trash2 className="w-4 h-4" />
