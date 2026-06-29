@@ -101,3 +101,12 @@ export const STATS = [
 export const PORTFOLIO_CATEGORIES = [
   "All", "Photography", "Branding", "Graphic Design", "Animations", "Web Design", "Print",
 ] as const;
+
+export const PHOTOGRAPHY_SUBCATEGORIES = [
+  "Portraits",
+  "Men at Work",
+  "Candid Shot",
+  "Landscape",
+  "Wedding Events",
+  "Burial Events",
+] as const;
