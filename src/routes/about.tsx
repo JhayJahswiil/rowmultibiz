@@ -30,7 +30,7 @@ const hueFor = (name: string) => (name.split("").reduce((a, c) => a + c.charCode
 function About() {
   return (
     <>
-      <PageHero eyebrow="About Us" title="A creative engine in Ado-Ekiti." subtitle="Frames, brands, motion, code — built by a team that treats craft as non-negotiable." />
+      <PageHero eyebrow="About Us" title="One Studio. Endless Possibilities." subtitle="Whether through stunning visuals or cutting-edge digital solutions, we help individuals and brands tell their stories with excellence." />
 
       <section className="py-20 sm:py-28 bg-background">
         <div className="max-w-4xl mx-auto px-5 sm:px-8">
