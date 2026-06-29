@@ -79,7 +79,7 @@ function Contact() {
 
           <div className="lg:col-span-2 space-y-4">
             {[
-              { Icon: MapPin, label: "Location", value: COMPANY.location },
+              { Icon: MapPin, label: "Location", value: COMPANY.address },
               { Icon: Mail, label: "Email", value: COMPANY.email },
               { Icon: Phone, label: "Phone", value: COMPANY.phone },
             ].map(({ Icon, label, value }) => (

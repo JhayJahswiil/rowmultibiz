@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Award, Sparkles, Zap, Users } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
-import { COMPANY } from "@/lib/site";
+import { COMPANY, TEAM, STATS } from "@/lib/site";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -17,17 +17,15 @@ export const Route = createFileRoute("/about")({
 });
 
 const VALUES = [
-  { icon: Award, title: "Quality", text: "We don't ship until it meets the bar — every frame, file, and pixel." },
-  { icon: Sparkles, title: "Creativity", text: "Original thinking, distinctive craft, and a strong point of view." },
-  { icon: Zap, title: "Innovation", text: "We leverage emerging technologies to push the standard higher." },
-  { icon: Users, title: "Client-First", text: "We listen, we partner, and we deliver outcomes — not just deliverables." },
+  { icon: Award, title: "Best Quality Designs", text: "We don't ship until it meets the bar — every frame, file, and pixel." },
+  { icon: Sparkles, title: "Experienced Professionals", text: "A team trained across photography, design, motion, and web." },
+  { icon: Zap, title: "Result-Oriented Projects", text: "We measure success by the outcomes we deliver for our clients." },
+  { icon: Users, title: "24/7 Live Support", text: "Warmth, friendliness, and responsiveness in every interaction." },
 ];
 
-const TEAM = [
-  { name: "Lead Creative", role: "Direction & Photography", hue: 15 },
-  { name: "Design Director", role: "Branding & Graphic Design", hue: 25 },
-  { name: "Motion Lead", role: "Animation & Video", hue: 5 },
-];
+// Deterministic accent hue per team member
+const hueFor = (name: string) => (name.split("").reduce((a, c) => a + c.charCodeAt(0), 0) % 30) + 0;
+
 
 function About() {
   return (
@@ -57,8 +55,8 @@ function About() {
       <section className="pb-20 sm:pb-28 bg-background">
         <div className="max-w-6xl mx-auto px-5 sm:px-8 grid md:grid-cols-2 gap-6">
           {[
-            { label: "Mission", title: "Empower brands and people with creative craft.", body: "We exist to translate ideas into compelling visuals, motion, and digital experiences that grow businesses and elevate stories." },
-            { label: "Vision", title: "Be Africa's most trusted multimedia studio.", body: "A studio where emerging technology and human craft meet to set a new standard for creative production on the continent." },
+            { label: "Mission", title: "The highest quality of customer service.", body: "Dedication to the highest quality of customer service delivered with a sense of warmth and friendliness — to create the most compelling company of the 21st century." },
+            { label: "Founder", title: "Rawa Olabode Wilson — C.E.O.", body: "A passionate photographer with a strong interest in journalism, trained at the Nigeria Institute of Journalism (NIJ), Lagos. He further sharpened his craft during industrial training at a reputable media organization in Accra, Ghana — gaining hands-on experience with modern equipment that shapes the studio's standard today." },
           ].map((c, i) => (
             <motion.div key={c.label} initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-10 rounded-3xl bg-[var(--ink)] text-white relative overflow-hidden">
               <div className="absolute -top-20 -right-20 w-60 h-60 bg-[var(--brand)] rounded-full opacity-30 blur-3xl" />
@@ -103,13 +101,22 @@ function About() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {TEAM.map((m, i) => (
-              <motion.div key={m.name} initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="group">
-                <div className="aspect-[4/5] rounded-2xl overflow-hidden relative" style={{ background: `linear-gradient(160deg, oklch(0.45 0.20 ${m.hue}), oklch(0.16 0.005 0))` }}>
+              <motion.div key={m.name} initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="group">
+                <div className="aspect-[4/5] rounded-2xl overflow-hidden relative" style={{ background: `linear-gradient(160deg, oklch(0.45 0.20 ${hueFor(m.name)}), oklch(0.16 0.005 0))` }}>
                   <div className="absolute inset-0 grid place-items-center text-white/40 text-6xl font-display font-bold">{m.name.split(" ").map(w=>w[0]).join("")}</div>
                 </div>
                 <h3 className="mt-5 text-xl font-bold">{m.name}</h3>
                 <p className="text-sm text-muted-foreground">{m.role}</p>
               </motion.div>
+            ))}
+          </div>
+          {/* Stats */}
+          <div className="mt-20 grid sm:grid-cols-3 gap-6">
+            {STATS.map((s) => (
+              <div key={s.label} className="p-8 rounded-2xl bg-secondary/50 border border-border text-center">
+                <div className="text-5xl font-display font-bold text-[var(--brand)]">{s.value}</div>
+                <div className="mt-2 text-sm uppercase tracking-widest text-muted-foreground">{s.label}</div>
+              </div>
             ))}
           </div>
         </div>
