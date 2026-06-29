@@ -83,14 +83,17 @@ function AdminPanel() {
     const file = fd.get("file") as File;
     const title = String(fd.get("title") ?? "").trim();
     const category = String(fd.get("category") ?? "");
+    const subcategory = String(fd.get("subcategory") ?? "");
     if (!file || !file.size) { toast.error("Pick a file"); return; }
     if (!title) { toast.error("Add a title"); return; }
     if (!category) { toast.error("Pick a category"); return; }
+    if (category === "Photography" && !subcategory) { toast.error("Pick a photography subcategory"); return; }
     setUploading(true);
     try {
-      await uploadPortfolio(file, title, category);
+      await uploadPortfolio(file, title, category, category === "Photography" ? subcategory : null);
       toast.success("Uploaded!");
       (e.target as HTMLFormElement).reset();
+      setCategory("");
       reload();
     } catch (err: any) { toast.error(err.message); }
     finally { setUploading(false); }
