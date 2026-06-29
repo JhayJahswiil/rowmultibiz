@@ -14,7 +14,96 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      bookings: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          name: string
+          notes: string | null
+          phone: string
+          preferred_date: string
+          service: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          name: string
+          notes?: string | null
+          phone: string
+          preferred_date: string
+          service: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          notes?: string | null
+          phone?: string
+          preferred_date?: string
+          service?: string
+        }
+        Relationships: []
+      }
+      contact_submissions: {
+        Row: {
+          email: string
+          id: string
+          message: string
+          name: string
+          phone: string | null
+          subject: string | null
+          submitted_at: string
+        }
+        Insert: {
+          email: string
+          id?: string
+          message: string
+          name: string
+          phone?: string | null
+          subject?: string | null
+          submitted_at?: string
+        }
+        Update: {
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          phone?: string | null
+          subject?: string | null
+          submitted_at?: string
+        }
+        Relationships: []
+      }
+      portfolio_images: {
+        Row: {
+          category: string
+          id: string
+          storage_path: string | null
+          title: string
+          uploaded_at: string
+          url: string
+        }
+        Insert: {
+          category: string
+          id?: string
+          storage_path?: string | null
+          title: string
+          uploaded_at?: string
+          url: string
+        }
+        Update: {
+          category?: string
+          id?: string
+          storage_path?: string | null
+          title?: string
+          uploaded_at?: string
+          url?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
