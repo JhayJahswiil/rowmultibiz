@@ -24,8 +24,9 @@ export function Navbar() {
       "fixed top-0 inset-x-0 z-50 transition-all duration-300",
       scrolled || open ? "bg-[oklch(0.10_0.005_0)/95] backdrop-blur-md border-b border-white/5" : "bg-transparent"
     )}>
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 h-18 flex items-center justify-between py-3">
-        <Logo className="h-9" />
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between py-3">
+        <Logo className="h-12 sm:h-14 max-w-[220px] sm:max-w-none w-auto object-contain" />
+
 
         <nav className="hidden md:flex items-center gap-8">
           {NAV.map((item) => {
