@@ -5,6 +5,7 @@ export interface PortfolioImage {
   url: string;
   title: string;
   category: string;
+  subcategory: string | null;
   storage_path: string | null;
   uploaded_at: string;
   displayUrl?: string;
@@ -29,7 +30,7 @@ export async function listPortfolio(): Promise<PortfolioImage[]> {
   return Promise.all((data as PortfolioImage[]).map(withSignedUrl));
 }
 
-export async function uploadPortfolio(file: File, title: string, category: string): Promise<void> {
+export async function uploadPortfolio(file: File, title: string, category: string, subcategory?: string | null): Promise<void> {
   const ext = file.name.split(".").pop() ?? "jpg";
   const path = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
   const { error: upErr } = await supabase.storage.from(BUCKET).upload(path, file, { contentType: file.type });
@@ -39,6 +40,7 @@ export async function uploadPortfolio(file: File, title: string, category: strin
     url: pub.publicUrl,
     title,
     category,
+    subcategory: subcategory || null,
     storage_path: path,
   });
   if (error) throw error;

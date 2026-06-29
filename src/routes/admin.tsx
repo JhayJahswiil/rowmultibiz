@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { Trash2, Upload, Lock } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { listPortfolio, uploadPortfolio, deletePortfolio, type PortfolioImage } from "@/lib/portfolio";
-import { PORTFOLIO_CATEGORIES } from "@/lib/site";
+import { PORTFOLIO_CATEGORIES, PHOTOGRAPHY_SUBCATEGORIES } from "@/lib/site";
 
 const ADMIN_PASSWORD = "rowadmin2024";
 const STORAGE_KEY = "row_admin_auth";
@@ -67,6 +67,7 @@ function AdminPanel() {
   const [items, setItems] = useState<PortfolioImage[]>([]);
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
+  const [category, setCategory] = useState<string>("");
 
   async function reload() {
     setLoading(true);
@@ -82,14 +83,17 @@ function AdminPanel() {
     const file = fd.get("file") as File;
     const title = String(fd.get("title") ?? "").trim();
     const category = String(fd.get("category") ?? "");
+    const subcategory = String(fd.get("subcategory") ?? "");
     if (!file || !file.size) { toast.error("Pick a file"); return; }
     if (!title) { toast.error("Add a title"); return; }
     if (!category) { toast.error("Pick a category"); return; }
+    if (category === "Photography" && !subcategory) { toast.error("Pick a photography subcategory"); return; }
     setUploading(true);
     try {
-      await uploadPortfolio(file, title, category);
+      await uploadPortfolio(file, title, category, category === "Photography" ? subcategory : null);
       toast.success("Uploaded!");
       (e.target as HTMLFormElement).reset();
+      setCategory("");
       reload();
     } catch (err: any) { toast.error(err.message); }
     finally { setUploading(false); }
@@ -114,11 +118,20 @@ function AdminPanel() {
             </label>
             <label className="block">
               <span className="text-sm font-semibold mb-2 block">Category</span>
-              <select name="category" required className="w-full px-3 py-2 rounded-lg bg-secondary border border-border">
+              <select name="category" required value={category} onChange={(e) => setCategory(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-secondary border border-border">
                 <option value="">Choose…</option>
                 {PORTFOLIO_CATEGORIES.filter(c => c !== "All").map(c => <option key={c}>{c}</option>)}
               </select>
             </label>
+            {category === "Photography" && (
+              <label className="block">
+                <span className="text-sm font-semibold mb-2 block">Photography Subcategory</span>
+                <select name="subcategory" required className="w-full px-3 py-2 rounded-lg bg-secondary border border-border">
+                  <option value="">Choose…</option>
+                  {PHOTOGRAPHY_SUBCATEGORIES.map(s => <option key={s}>{s}</option>)}
+                </select>
+              </label>
+            )}
             <label className="block">
               <span className="text-sm font-semibold mb-2 block">Image</span>
               <input name="file" type="file" accept="image/*" required className="w-full text-sm" />
@@ -144,7 +157,7 @@ function AdminPanel() {
                     <div className="p-4 flex items-center justify-between gap-3">
                       <div className="min-w-0">
                         <p className="font-semibold truncate">{it.title}</p>
-                        <p className="text-xs text-[var(--brand)] uppercase tracking-wider">{it.category}</p>
+                        <p className="text-xs text-[var(--brand)] uppercase tracking-wider">{it.category}{it.subcategory ? ` · ${it.subcategory}` : ""}</p>
                       </div>
                       <button onClick={() => onDelete(it)} aria-label="Delete" className="p-2 rounded-lg text-muted-foreground hover:text-[var(--brand)] hover:bg-secondary transition">
                         <Trash2 className="w-4 h-4" />

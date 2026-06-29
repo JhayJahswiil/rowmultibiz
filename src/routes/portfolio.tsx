@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
-import { PORTFOLIO_CATEGORIES } from "@/lib/site";
+import { PORTFOLIO_CATEGORIES, PHOTOGRAPHY_SUBCATEGORIES } from "@/lib/site";
 import { listPortfolio, type PortfolioImage } from "@/lib/portfolio";
 import { cn } from "@/lib/utils";
 
@@ -23,6 +23,7 @@ function Portfolio() {
   const [items, setItems] = useState<PortfolioImage[]>([]);
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState<string>("All");
+  const [subcategory, setSubcategory] = useState<string>("All");
   const [lightbox, setLightbox] = useState<PortfolioImage | null>(null);
 
   useEffect(() => {
@@ -32,10 +33,13 @@ function Portfolio() {
       .finally(() => setLoading(false));
   }, []);
 
-  const filtered = useMemo(
-    () => category === "All" ? items : items.filter((i) => i.category === category),
-    [items, category]
-  );
+  const filtered = useMemo(() => {
+    let list = category === "All" ? items : items.filter((i) => i.category === category);
+    if (category === "Photography" && subcategory !== "All") {
+      list = list.filter((i) => i.subcategory === subcategory);
+    }
+    return list;
+  }, [items, category, subcategory]);
 
   return (
     <>
@@ -43,11 +47,11 @@ function Portfolio() {
 
       <section className="py-16 sm:py-20 bg-background">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <div className="flex flex-wrap gap-2 mb-10 justify-center">
+          <div className="flex flex-wrap gap-2 mb-6 justify-center">
             {PORTFOLIO_CATEGORIES.map((c) => (
               <button
                 key={c}
-                onClick={() => setCategory(c)}
+                onClick={() => { setCategory(c); setSubcategory("All"); }}
                 className={cn(
                   "px-5 py-2.5 rounded-full text-sm font-semibold transition",
                   category === c
@@ -59,6 +63,26 @@ function Portfolio() {
               </button>
             ))}
           </div>
+
+          {category === "Photography" && (
+            <div className="flex flex-wrap gap-2 mb-10 justify-center">
+              {(["All", ...PHOTOGRAPHY_SUBCATEGORIES] as const).map((s) => (
+                <button
+                  key={s}
+                  onClick={() => setSubcategory(s)}
+                  className={cn(
+                    "px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition border",
+                    subcategory === s
+                      ? "bg-[var(--brand-soft)] text-[var(--ink)] border-[var(--brand-soft)]"
+                      : "bg-transparent text-muted-foreground border-border hover:text-foreground"
+                  )}
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+          )}
+          {category !== "Photography" && <div className="mb-4" />}
 
           {loading ? (
             <div className="text-center py-20 text-muted-foreground">Loading portfolio…</div>
