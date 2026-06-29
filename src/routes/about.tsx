@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Award, Sparkles, Zap, Users } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
-import { COMPANY } from "@/lib/site";
+import { COMPANY, TEAM, STATS } from "@/lib/site";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -17,17 +17,15 @@ export const Route = createFileRoute("/about")({
 });
 
 const VALUES = [
-  { icon: Award, title: "Quality", text: "We don't ship until it meets the bar — every frame, file, and pixel." },
-  { icon: Sparkles, title: "Creativity", text: "Original thinking, distinctive craft, and a strong point of view." },
-  { icon: Zap, title: "Innovation", text: "We leverage emerging technologies to push the standard higher." },
-  { icon: Users, title: "Client-First", text: "We listen, we partner, and we deliver outcomes — not just deliverables." },
+  { icon: Award, title: "Best Quality Designs", text: "We don't ship until it meets the bar — every frame, file, and pixel." },
+  { icon: Sparkles, title: "Experienced Professionals", text: "A team trained across photography, design, motion, and web." },
+  { icon: Zap, title: "Result-Oriented Projects", text: "We measure success by the outcomes we deliver for our clients." },
+  { icon: Users, title: "24/7 Live Support", text: "Warmth, friendliness, and responsiveness in every interaction." },
 ];
 
-const TEAM = [
-  { name: "Lead Creative", role: "Direction & Photography", hue: 15 },
-  { name: "Design Director", role: "Branding & Graphic Design", hue: 25 },
-  { name: "Motion Lead", role: "Animation & Video", hue: 5 },
-];
+// Deterministic accent hue per team member
+const hueFor = (name: string) => (name.split("").reduce((a, c) => a + c.charCodeAt(0), 0) % 30) + 0;
+
 
 function About() {
   return (
