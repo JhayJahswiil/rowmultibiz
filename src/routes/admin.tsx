@@ -118,11 +118,20 @@ function AdminPanel() {
             </label>
             <label className="block">
               <span className="text-sm font-semibold mb-2 block">Category</span>
-              <select name="category" required className="w-full px-3 py-2 rounded-lg bg-secondary border border-border">
+              <select name="category" required value={category} onChange={(e) => setCategory(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-secondary border border-border">
                 <option value="">Choose…</option>
                 {PORTFOLIO_CATEGORIES.filter(c => c !== "All").map(c => <option key={c}>{c}</option>)}
               </select>
             </label>
+            {category === "Photography" && (
+              <label className="block">
+                <span className="text-sm font-semibold mb-2 block">Photography Subcategory</span>
+                <select name="subcategory" required className="w-full px-3 py-2 rounded-lg bg-secondary border border-border">
+                  <option value="">Choose…</option>
+                  {PHOTOGRAPHY_SUBCATEGORIES.map(s => <option key={s}>{s}</option>)}
+                </select>
+              </label>
+            )}
             <label className="block">
               <span className="text-sm font-semibold mb-2 block">Image</span>
               <input name="file" type="file" accept="image/*" required className="w-full text-sm" />
