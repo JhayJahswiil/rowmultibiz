@@ -32,10 +32,14 @@ function Portfolio() {
       .finally(() => setLoading(false));
   }, []);
 
-  const filtered = useMemo(
-    () => category === "All" ? items : items.filter((i) => i.category === category),
-    [items, category]
-  );
+  const filtered = useMemo(() => {
+    if (category === "All") return items;
+    if (category === "Photography") {
+      const photoSet = new Set<string>(["Photography", ...PHOTOGRAPHY_SUBCATEGORIES]);
+      return items.filter((i) => photoSet.has(i.category));
+    }
+    return items.filter((i) => i.category === category);
+  }, [items, category]);
 
   return (
     <>
