@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
-import { PORTFOLIO_CATEGORIES } from "@/lib/site";
+import { PORTFOLIO_CATEGORIES, PHOTOGRAPHY_SUBCATEGORIES } from "@/lib/site";
 import { listPortfolio, type PortfolioImage } from "@/lib/portfolio";
 import { cn } from "@/lib/utils";
 
