@@ -98,6 +98,22 @@ export const STATS = [
   { value: "10", label: "Accolades Earned" },
 ] as const;
 
+export const PHOTOGRAPHY_SUBCATEGORIES = [
+  "Portraits",
+  "Men at Work",
+  "Candid Shot",
+  "Landscape",
+  "Wedding Events",
+  "Burial Events",
+] as const;
+
 export const PORTFOLIO_CATEGORIES = [
-  "All", "Photography", "Branding", "Graphic Design", "Animations", "Web Design", "Print",
+  "All",
+  "Photography",
+  ...PHOTOGRAPHY_SUBCATEGORIES,
+  "Branding",
+  "Graphic Design",
+  "Animations",
+  "Web Design",
+  "Print",
 ] as const;

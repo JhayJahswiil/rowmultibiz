@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
-import { PORTFOLIO_CATEGORIES } from "@/lib/site";
+import { PORTFOLIO_CATEGORIES, PHOTOGRAPHY_SUBCATEGORIES } from "@/lib/site";
 import { listPortfolio, type PortfolioImage } from "@/lib/portfolio";
 import { cn } from "@/lib/utils";
 
@@ -32,10 +32,14 @@ function Portfolio() {
       .finally(() => setLoading(false));
   }, []);
 
-  const filtered = useMemo(
-    () => category === "All" ? items : items.filter((i) => i.category === category),
-    [items, category]
-  );
+  const filtered = useMemo(() => {
+    if (category === "All") return items;
+    if (category === "Photography") {
+      const photoSet = new Set<string>(["Photography", ...PHOTOGRAPHY_SUBCATEGORIES]);
+      return items.filter((i) => photoSet.has(i.category));
+    }
+    return items.filter((i) => i.category === category);
+  }, [items, category]);
 
   return (
     <>
