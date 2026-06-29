@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { Trash2, Upload, Lock } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { listPortfolio, uploadPortfolio, deletePortfolio, type PortfolioImage } from "@/lib/portfolio";
-import { PORTFOLIO_CATEGORIES } from "@/lib/site";
+import { PORTFOLIO_CATEGORIES, PHOTOGRAPHY_SUBCATEGORIES } from "@/lib/site";
 
 const ADMIN_PASSWORD = "rowadmin2024";
 const STORAGE_KEY = "row_admin_auth";
