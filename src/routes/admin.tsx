@@ -67,6 +67,7 @@ function AdminPanel() {
   const [items, setItems] = useState<PortfolioImage[]>([]);
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
+  const [category, setCategory] = useState<string>("");
 
   async function reload() {
     setLoading(true);
