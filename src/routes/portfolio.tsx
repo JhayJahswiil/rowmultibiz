@@ -23,6 +23,7 @@ function Portfolio() {
   const [items, setItems] = useState<PortfolioImage[]>([]);
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState<string>("All");
+  const [subcategory, setSubcategory] = useState<string>("All");
   const [lightbox, setLightbox] = useState<PortfolioImage | null>(null);
 
   useEffect(() => {
@@ -32,10 +33,13 @@ function Portfolio() {
       .finally(() => setLoading(false));
   }, []);
 
-  const filtered = useMemo(
-    () => category === "All" ? items : items.filter((i) => i.category === category),
-    [items, category]
-  );
+  const filtered = useMemo(() => {
+    let list = category === "All" ? items : items.filter((i) => i.category === category);
+    if (category === "Photography" && subcategory !== "All") {
+      list = list.filter((i) => i.subcategory === subcategory);
+    }
+    return list;
+  }, [items, category, subcategory]);
 
   return (
     <>
