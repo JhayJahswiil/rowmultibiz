@@ -72,12 +72,31 @@ export const NAV = [
 export const COMPANY = {
   name: "ROW Multi-Biz Prod. Global Company",
   short: "ROW",
+  address: "Eltayon Filling Station, beside Access Bank, Ado-Ekiti",
   location: "Ado-Ekiti, Ekiti State, Nigeria",
-  email: "hello@rowmultibiz.com",
-  phone: "+234 800 000 0000",
+  email: "olabodewilson@gmail.com",
+  phone: "+234 806 229 8842",
+  phoneShort: "08062298842",
+  whatsapp: "https://wa.me/2348062298842",
   incorporated: "October 9, 2018",
   status: "ACTIVE",
 };
+
+export const TEAM = [
+  { name: "Rawa Olabode Wilson", role: "C.E.O / Founder" },
+  { name: "Ayodeji Michael Olajide", role: "Supervisor" },
+  { name: "Kemisola Ajayi", role: "Accountant" },
+  { name: "Johnson Abioye", role: "Receptionist" },
+  { name: "Joshua Isedowo", role: "Dispatcher" },
+  { name: "Oluwatoyin Akinlua", role: "Web Developer" },
+  { name: "Emmanuel Oluwatosin Dada", role: "Studio Photographer" },
+] as const;
+
+export const STATS = [
+  { value: "100+", label: "Satisfied Clients" },
+  { value: "100+", label: "Projects Completed" },
+  { value: "10", label: "Accolades Earned" },
+] as const;
 
 export const PORTFOLIO_CATEGORIES = [
   "All", "Photography", "Branding", "Graphic Design", "Animations", "Web Design", "Print",
