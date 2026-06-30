@@ -1,9 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { useEffect, useState } from "react";
 import { SERVICES, COMPANY } from "@/lib/site";
+import { listPortfolio, type PortfolioImage } from "@/lib/portfolio";
 import heroImg from "@/assets/hero-photographer.jpg";
 import studioImg from "@/assets/about-studio.jpg";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
