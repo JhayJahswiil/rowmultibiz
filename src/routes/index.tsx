@@ -30,7 +30,7 @@ function Home() {
         <div className="relative max-w-7xl mx-auto px-5 sm:px-8 py-32 grid lg:grid-cols-12 gap-12 items-center w-full">
           <div className="lg:col-span-8">
             <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-xs sm:text-sm uppercase tracking-[0.3em] text-[var(--brand-soft)] mb-6 font-medium">
-              Ado-Ekiti · Est. 2018
+              {"\n"}
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
