@@ -1,9 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { useEffect, useState } from "react";
 import { SERVICES, COMPANY } from "@/lib/site";
+import { listPortfolio, type PortfolioImage } from "@/lib/portfolio";
 import heroImg from "@/assets/hero-photographer.jpg";
 import studioImg from "@/assets/about-studio.jpg";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -158,14 +161,27 @@ function Home() {
 }
 
 function PortfolioTeaser() {
-  const items = [
-    { ratio: "aspect-[4/5]", hue: 15 },
-    { ratio: "aspect-[4/3]", hue: 25 },
-    { ratio: "aspect-square", hue: 35 },
-    { ratio: "aspect-[4/3]", hue: 350 },
-    { ratio: "aspect-[4/5]", hue: 5 },
-    { ratio: "aspect-square", hue: 20 },
-  ];
+  const [items, setItems] = useState<PortfolioImage[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+    listPortfolio()
+      .then((all) => {
+        if (cancelled) return;
+        const photo = all.filter((i) => i.category === "Photography");
+        const rest = all.filter((i) => i.category !== "Photography");
+        setItems([...photo, ...rest].slice(0, 6));
+      })
+      .catch(() => {})
+      .finally(() => !cancelled && setLoading(false));
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const ratios = ["aspect-[4/5]", "aspect-[4/3]", "aspect-square", "aspect-[4/3]", "aspect-[4/5]", "aspect-square"];
+
   return (
     <section className="py-24 sm:py-32 bg-background">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
@@ -178,28 +194,48 @@ function PortfolioTeaser() {
             View All Work <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 [&>*]:mb-4">
-          {items.map((it, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05, duration: 0.6 }}
-              className={`relative ${it.ratio} rounded-xl overflow-hidden group break-inside-avoid`}
-              style={{ background: `linear-gradient(135deg, oklch(0.45 0.18 ${it.hue}), oklch(0.18 0.04 ${it.hue}))` }}
-            >
-              <div className="absolute inset-0 grid place-items-center text-white/30 text-7xl font-display font-bold">{String(i + 1).padStart(2, "0")}</div>
-              <div className="absolute inset-0 bg-[var(--ink)]/0 group-hover:bg-[var(--ink)]/40 transition flex items-end p-5">
-                <div className="opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition">
-                  <p className="text-white font-semibold">Selected Project {i + 1}</p>
-                  <p className="text-white/70 text-sm">Add work via /admin</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+
+        {!loading && items.length === 0 ? (
+          <div className="text-center py-16 text-muted-foreground">
+            No work uploaded yet. Add images via <Link to="/portfolio" className="text-[var(--brand)] font-semibold">the gallery</Link>.
+          </div>
+        ) : (
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 [&>*]:mb-4">
+            {(loading ? Array.from({ length: 6 }) : items).map((it, i) => {
+              const item = it as PortfolioImage | undefined;
+              const ratio = ratios[i % ratios.length];
+              return (
+                <motion.div
+                  key={item?.id ?? i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05, duration: 0.6 }}
+                  className={`relative ${ratio} rounded-xl overflow-hidden group break-inside-avoid bg-[var(--ink)]/10`}
+                >
+                  {item && (
+                    <>
+                      <img
+                        src={item.displayUrl ?? item.url}
+                        alt={item.title}
+                        loading="lazy"
+                        className="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-[var(--ink)]/0 group-hover:bg-[var(--ink)]/50 transition flex items-end p-5">
+                        <div className="opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition">
+                          <p className="text-white font-semibold">{item.title}</p>
+                          <p className="text-white/70 text-sm">{item.subcategory ?? item.category}</p>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </motion.div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </section>
   );
 }
+
