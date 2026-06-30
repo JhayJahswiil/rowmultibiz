@@ -21,9 +21,10 @@ export function Navbar() {
 
   return (
     <header className={cn(
-      "fixed top-0 inset-x-0 z-50 transition-all duration-300",
-      scrolled || open ? "bg-[oklch(0.10_0.005_0)/95] backdrop-blur-md border-b border-white/5" : "bg-transparent"
+      "fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-[oklch(0.10_0.005_0)/95] backdrop-blur-md",
+      scrolled || open ? "border-b border-white/10 shadow-lg shadow-black/20" : "border-b border-white/5"
     )}>
+
       <div className="max-w-7xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between py-3">
         <Logo className="h-12 sm:h-14 max-w-[220px] sm:max-w-none w-auto object-contain" />
 
