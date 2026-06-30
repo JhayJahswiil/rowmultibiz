@@ -72,7 +72,7 @@ export const NAV = [
 export const COMPANY = {
   name: "ROW Multi-Biz Prod. Global Company",
   short: "ROW",
-  address: "Eltayon Filling Station, beside Access Bank, Ado-Ekiti",
+  address: "Obafemi Awolowo Civic Centre, Fajuyi, Ado-Ekiti",
   location: "Ado-Ekiti, Ekiti State, Nigeria",
   email: "olabodewilson@gmail.com",
   phone: "+234 806 229 8842",
