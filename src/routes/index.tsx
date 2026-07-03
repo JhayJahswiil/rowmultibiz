@@ -32,14 +32,14 @@ function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center bg-[var(--ink)] text-white overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center bg-[var(--ink)] text-white overflow-hidden">
         <div className="absolute inset-0">
           <img src={heroImg} alt="" className="w-full h-full object-cover opacity-55" loading="eager" />
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--ink)] via-[var(--ink)]/80 to-[var(--ink)]/40" />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--ink)] via-[var(--ink)]/30 to-[var(--ink)]/60" />
         </div>
-        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 py-32 grid lg:grid-cols-12 gap-12 items-center w-full">
-          <div className="lg:col-span-8">
+        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 py-32 w-full text-center">
+          <div className="max-w-4xl mx-auto">
             <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-xs sm:text-sm uppercase tracking-[0.3em] text-[var(--brand-soft)] mb-6 font-medium">
               {"\n"}
             </motion.p>
@@ -50,9 +50,9 @@ function Home() {
               className="text-5xl sm:text-7xl md:text-8xl font-bold leading-[0.95] tracking-tight"
             >
               Capturing Moments.<br/>
-              <span className="inline-flex flex-wrap items-baseline gap-x-[0.25em]">
+              <span className="inline-flex flex-wrap items-baseline justify-center gap-x-[0.25em]">
                 <span>Building</span>
-                <span className="relative inline-block align-baseline overflow-hidden" style={{ minWidth: "6ch" }}>
+                <span className="relative inline-block align-baseline overflow-hidden text-left" style={{ minWidth: "6ch" }}>
                   <AnimatePresence mode="wait">
                     <motion.span
                       key={ROTATING_WORDS[wordIdx]}
@@ -69,11 +69,11 @@ function Home() {
               </span><br/>
               Creating Impact.
             </motion.h1>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.7 }} className="mt-8 text-lg sm:text-xl text-white/70 max-w-2xl leading-relaxed">
+            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.7 }} className="mt-8 text-lg sm:text-xl text-white/70 max-w-2xl leading-relaxed mx-auto">
               Full-service multimedia production company in Ado-Ekiti, Nigeria — pairing
               emerging technology with creative craft to deliver work that moves people.
             </motion.p>
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35, duration: 0.7 }} className="mt-10 flex flex-wrap gap-4">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35, duration: 0.7 }} className="mt-10 flex flex-wrap justify-center gap-4">
               <Link to="/booking" className="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-gradient text-white font-semibold rounded-full shadow-brand hover:scale-[1.02] transition">
                 Book Appointment <ArrowRight className="w-4 h-4" />
               </Link>
@@ -95,7 +95,7 @@ function Home() {
 
       {/* WHO WE ARE */}
       <section className="py-24 sm:py-32 bg-background">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
             <p className="text-xs uppercase tracking-[0.3em] text-[var(--brand)] font-semibold mb-4">Who We Are</p>
             <h2 className="text-4xl sm:text-5xl font-bold leading-tight">A creative studio built for the new media era.</h2>
@@ -124,9 +124,9 @@ function Home() {
               ))}
             </div>
           </motion.div>
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative">
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative flex justify-center items-center">
             <div className="absolute -inset-4 bg-brand-gradient rounded-2xl opacity-30 blur-2xl" />
-            <img src={studioImg} alt="ROW studio workspace" className="relative rounded-2xl w-full aspect-[4/5] object-cover" />
+            <img src={studioImg} alt="ROW studio workspace" className="relative rounded-2xl w-full max-w-md h-auto max-h-[380px] sm:max-h-[420px] lg:max-h-[480px] object-cover" />
           </motion.div>
         </div>
       </section>
