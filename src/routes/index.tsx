@@ -20,15 +20,23 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
+const ROTATING_WORDS = ["Brands.", "Businesses.", "Organizations."];
+
 function Home() {
+  const [wordIdx, setWordIdx] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setWordIdx((i) => (i + 1) % ROTATING_WORDS.length), 2600);
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <>
       {/* HERO */}
       <section className="relative min-h-screen flex items-center bg-[var(--ink)] text-white overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroImg} alt="" className="w-full h-full object-cover opacity-40" loading="eager" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[var(--ink)] via-[var(--ink)]/85 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--ink)] via-transparent to-[var(--ink)]/40" />
+          <img src={heroImg} alt="" className="w-full h-full object-cover opacity-55" loading="eager" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--ink)] via-[var(--ink)]/80 to-[var(--ink)]/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--ink)] via-[var(--ink)]/30 to-[var(--ink)]/60" />
         </div>
         <div className="relative max-w-7xl mx-auto px-5 sm:px-8 py-32 grid lg:grid-cols-12 gap-12 items-center w-full">
           <div className="lg:col-span-8">
@@ -42,7 +50,23 @@ function Home() {
               className="text-5xl sm:text-7xl md:text-8xl font-bold leading-[0.95] tracking-tight"
             >
               Capturing Moments.<br/>
-              Building <span className="text-[var(--brand)]">Brands.</span><br/>
+              <span className="inline-flex flex-wrap items-baseline gap-x-[0.25em]">
+                <span>Building</span>
+                <span className="relative inline-block align-baseline overflow-hidden" style={{ minWidth: "6ch" }}>
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={ROTATING_WORDS[wordIdx]}
+                      initial={{ y: "100%", opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: "-100%", opacity: 0 }}
+                      transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
+                      className="inline-block text-[var(--brand)] whitespace-nowrap"
+                    >
+                      {ROTATING_WORDS[wordIdx]}
+                    </motion.span>
+                  </AnimatePresence>
+                </span>
+              </span><br/>
               Creating Impact.
             </motion.h1>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.7 }} className="mt-8 text-lg sm:text-xl text-white/70 max-w-2xl leading-relaxed">
