@@ -95,7 +95,7 @@ function Home() {
 
       {/* WHO WE ARE */}
       <section className="py-24 sm:py-32 bg-background">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
             <p className="text-xs uppercase tracking-[0.3em] text-[var(--brand)] font-semibold mb-4">Who We Are</p>
             <h2 className="text-4xl sm:text-5xl font-bold leading-tight">A creative studio built for the new media era.</h2>
@@ -124,9 +124,9 @@ function Home() {
               ))}
             </div>
           </motion.div>
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative">
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative flex justify-center items-center">
             <div className="absolute -inset-4 bg-brand-gradient rounded-2xl opacity-30 blur-2xl" />
-            <img src={studioImg} alt="ROW studio workspace" className="relative rounded-2xl w-full aspect-[4/5] object-cover" />
+            <img src={studioImg} alt="ROW studio workspace" className="relative rounded-2xl w-full max-w-md h-auto max-h-[380px] sm:max-h-[420px] lg:max-h-[480px] object-cover" />
           </motion.div>
         </div>
       </section>
