@@ -25,6 +25,9 @@ function Portfolio() {
   const [category, setCategory] = useState<string>("All");
   const [subcategory, setSubcategory] = useState<string>("All");
   const [lightbox, setLightbox] = useState<PortfolioImage | null>(null);
+  const [visible, setVisible] = useState(9);
+
+  useEffect(() => { setVisible(9); }, [category, subcategory]);
 
   useEffect(() => {
     listPortfolio()
