@@ -169,9 +169,36 @@ function PortfolioTeaser() {
     listPortfolio()
       .then((all) => {
         if (cancelled) return;
-        const photo = all.filter((i) => i.category === "Photography");
-        const rest = all.filter((i) => i.category !== "Photography");
-        setItems([...photo, ...rest].slice(0, 6));
+        // Pick one image from as many distinct buckets as possible
+        // (photography subcategories first, then other categories) so the
+        // teaser reflects the range of work rather than a single tab.
+        const buckets = new Map<string, PortfolioImage[]>();
+        for (const it of all) {
+          const key =
+            it.category === "Photography" && it.subcategory
+              ? `Photography:${it.subcategory}`
+              : it.category;
+          if (!buckets.has(key)) buckets.set(key, []);
+          buckets.get(key)!.push(it);
+        }
+        const picked: PortfolioImage[] = [];
+        const used = new Set<string>();
+        // Round-robin across buckets until we have 6 (or run out).
+        let progress = true;
+        while (picked.length < 6 && progress) {
+          progress = false;
+          for (const [key, list] of buckets) {
+            if (picked.length >= 6) break;
+            const next = list.find((i) => !used.has(i.id));
+            if (next) {
+              picked.push(next);
+              used.add(next.id);
+              progress = true;
+            }
+            void key;
+          }
+        }
+        setItems(picked);
       })
       .catch(() => {})
       .finally(() => !cancelled && setLoading(false));
