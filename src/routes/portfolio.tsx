@@ -95,26 +95,39 @@ function Portfolio() {
               <p className="text-muted-foreground mt-2 text-sm">Upload images via the <code className="bg-secondary px-2 py-0.5 rounded">/admin</code> panel.</p>
             </div>
           ) : (
-            <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 [&>*]:mb-4">
-              {filtered.map((item, i) => (
-                <motion.button
-                  key={item.id}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: Math.min(i * 0.04, 0.4) }}
-                  onClick={() => setLightbox(item)}
-                  className="block break-inside-avoid w-full rounded-xl overflow-hidden group relative"
-                >
-                  <img src={item.displayUrl ?? item.url} alt={item.title} loading="lazy" className="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.03]" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--ink)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-5 text-left">
-                    <div>
-                      <p className="text-white font-bold">{item.title}</p>
-                      <p className="text-[var(--brand-soft)] text-xs uppercase tracking-wider mt-1">{item.category}</p>
+            <>
+              <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 [&>*]:mb-4">
+                {filtered.slice(0, visible).map((item, i) => (
+                  <motion.button
+                    key={item.id}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: Math.min(i * 0.04, 0.4) }}
+                    onClick={() => setLightbox(item)}
+                    className="block break-inside-avoid w-full rounded-xl overflow-hidden group relative"
+                  >
+                    <img src={item.displayUrl ?? item.url} alt={item.title} loading="lazy" className="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.03]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--ink)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-5 text-left">
+                      <div>
+                        <p className="text-white font-bold">{item.title}</p>
+                        <p className="text-[var(--brand-soft)] text-xs uppercase tracking-wider mt-1">{item.category}</p>
+                      </div>
                     </div>
-                  </div>
-                </motion.button>
-              ))}
-            </div>
+                  </motion.button>
+                ))}
+              </div>
+              {visible < filtered.length && (
+                <div className="flex justify-center mt-10">
+                  <button
+                    onClick={() => setVisible((v) => v + 9)}
+                    className="px-8 py-3 rounded-full bg-[var(--brand)] text-white font-semibold hover:bg-[var(--brand)]/90 transition"
+                  >
+                    Load More ({filtered.length - visible} left)
+                  </button>
+                </div>
+              )}
+            </>
+
           )}
         </div>
       </section>
