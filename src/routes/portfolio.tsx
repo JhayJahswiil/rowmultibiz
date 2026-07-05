@@ -121,7 +121,7 @@ function Portfolio() {
                     onClick={() => setVisible((v) => v + 9)}
                     className="px-8 py-3 rounded-full bg-[var(--brand)] text-white font-semibold hover:bg-[var(--brand)]/90 transition"
                   >
-                    Load More ({filtered.length - visible} left)
+                    Load more
                   </button>
                 </div>
               )}
