@@ -59,33 +59,20 @@ function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--ink)] via-[var(--ink)]/80 to-[var(--ink)]/40" />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--ink)] via-[var(--ink)]/30 to-[var(--ink)]/60" />
         </div>
-        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 py-32 w-full text-center">
-          <div className="max-w-4xl mx-auto">
-            <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-xs sm:text-sm uppercase tracking-[0.3em] text-[var(--brand-soft)] mb-6 font-medium">
-              {"\n"}
-            </motion.p>
+        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 py-40 sm:py-48 w-full text-center">
+          <div className="max-w-4xl mx-auto my-8 sm:my-12">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-5xl sm:text-7xl md:text-8xl font-bold leading-[0.95] tracking-tight"
+              className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05] tracking-tight"
             >
               Capturing Moments.<br/>
-              <span className="inline-flex flex-wrap items-baseline justify-center gap-x-[0.25em]">
+              <span className="inline-flex items-baseline justify-center gap-x-[0.25em] whitespace-nowrap">
                 <span>Building</span>
-                <span className="relative inline-block align-baseline overflow-hidden text-left" style={{ minWidth: "6ch" }}>
-                  <AnimatePresence mode="wait">
-                    <motion.span
-                      key={ROTATING_WORDS[wordIdx]}
-                      initial={{ y: "100%", opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      exit={{ y: "-100%", opacity: 0 }}
-                      transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
-                      className="inline-block text-[var(--brand)] whitespace-nowrap"
-                    >
-                      {ROTATING_WORDS[wordIdx]}
-                    </motion.span>
-                  </AnimatePresence>
+                <span className="text-[var(--brand)]">
+                  {typed}
+                  <span className="inline-block w-[0.08em] -mb-[0.05em] h-[0.9em] bg-[var(--brand)] align-baseline animate-pulse ml-[0.05em]" aria-hidden />
                 </span>
               </span><br/>
               Creating Impact.
