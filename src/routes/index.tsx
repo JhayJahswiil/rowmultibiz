@@ -21,13 +21,34 @@ export const Route = createFileRoute("/")({
 });
 
 const ROTATING_WORDS = ["Brands.", "Businesses.", "Organizations."];
+const TYPE_SPEED = 90;
+const ERASE_SPEED = 45;
+const HOLD_MS = 1400;
 
 function Home() {
   const [wordIdx, setWordIdx] = useState(0);
+  const [typed, setTyped] = useState("");
+  const [phase, setPhase] = useState<"typing" | "holding" | "erasing">("typing");
+
   useEffect(() => {
-    const id = setInterval(() => setWordIdx((i) => (i + 1) % ROTATING_WORDS.length), 2600);
-    return () => clearInterval(id);
-  }, []);
+    const full = ROTATING_WORDS[wordIdx];
+    let t: ReturnType<typeof setTimeout>;
+    if (phase === "typing") {
+      if (typed.length < full.length) {
+        t = setTimeout(() => setTyped(full.slice(0, typed.length + 1)), TYPE_SPEED);
+      } else {
+        t = setTimeout(() => setPhase("erasing"), HOLD_MS);
+      }
+    } else if (phase === "erasing") {
+      if (typed.length > 0) {
+        t = setTimeout(() => setTyped(full.slice(0, typed.length - 1)), ERASE_SPEED);
+      } else {
+        setWordIdx((i) => (i + 1) % ROTATING_WORDS.length);
+        setPhase("typing");
+      }
+    }
+    return () => clearTimeout(t!);
+  }, [typed, phase, wordIdx]);
 
   return (
     <>
