@@ -90,9 +90,8 @@ function Portfolio() {
           {loading ? (
             <div className="text-center py-20 text-muted-foreground">Loading portfolio…</div>
           ) : filtered.length === 0 ? (
-            <div className="text-center py-20">
-              <p className="text-xl font-semibold">No work yet in this category.</p>
-              <p className="text-muted-foreground mt-2 text-sm">Upload images via the <code className="bg-secondary px-2 py-0.5 rounded">/admin</code> panel.</p>
+            <div className="text-center py-24">
+              <p className="text-xl font-semibold text-muted-foreground">Coming soon</p>
             </div>
           ) : (
             <>
