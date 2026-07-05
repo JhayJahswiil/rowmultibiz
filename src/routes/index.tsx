@@ -60,12 +60,12 @@ function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--ink)] via-[var(--ink)]/30 to-[var(--ink)]/60" />
         </div>
         <div className="relative max-w-7xl mx-auto px-5 sm:px-8 py-40 sm:py-48 w-full text-center">
-          <div className="max-w-4xl mx-auto my-8 sm:my-12">
+          <div className="max-w-5xl mx-auto my-12 sm:my-16">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05] tracking-tight"
+              className="text-5xl sm:text-6xl md:text-7xl font-bold leading-[1.1] tracking-tight"
             >
               Capturing Moments.<br/>
               <span className="inline-flex items-baseline justify-center gap-x-[0.25em] whitespace-nowrap">
