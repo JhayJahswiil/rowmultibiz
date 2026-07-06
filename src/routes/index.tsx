@@ -66,7 +66,7 @@ function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-5xl sm:text-6xl md:text-7xl font-bold leading-[1.1] tracking-tight"
+              className="text-5xl sm:text-6xl md:text-7xl font-bold leading-[1.1] tracking-tight py-6"
             >
               Capturing Moments.<br/>
               <span className="inline-flex items-baseline justify-center gap-x-[0.25em] whitespace-nowrap">
@@ -78,11 +78,11 @@ function Home() {
               </span><br/>
               Creating Impact.
             </motion.h1>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.7 }} className="mt-8 text-lg sm:text-xl text-white/70 max-w-2xl leading-relaxed mx-auto">
+            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.7 }} className="my-8 text-lg sm:text-xl text-white/70 max-w-2xl leading-relaxed mx-auto">
               Full-service multimedia production company in Ado-Ekiti, Nigeria — pairing
               emerging technology with creative craft to deliver work that moves people.
             </motion.p>
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35, duration: 0.7 }} className="mt-10 flex flex-wrap justify-center gap-4">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35, duration: 0.7 }} className="mt-10 mb-6 flex flex-wrap justify-center gap-4">
               <Link to="/booking" className="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-gradient text-white font-semibold rounded-full shadow-brand hover:scale-[1.02] transition">
                 Book Appointment <ArrowRight className="w-4 h-4" />
               </Link>
