@@ -53,7 +53,7 @@ function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative mt-20 h-[calc(100vh-5rem)] flex items-center justify-center bg-[var(--ink)] text-white overflow-hidden">
+      <section className="relative h-screen flex items-center justify-center bg-[var(--ink)] text-white overflow-hidden pt-20">
         <div className="absolute inset-0">
           <img src={heroImg} alt="" className="w-full h-full object-cover opacity-55" loading="eager" />
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--ink)] via-[var(--ink)]/80 to-[var(--ink)]/40" />
