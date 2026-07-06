@@ -14,8 +14,13 @@ export function Footer() {
             building brands, creating impact.
           </p>
           <div className="flex gap-3 mt-6">
-            {[Instagram, Facebook, Twitter].map((Icon, i) => (
-              <a key={i} href="#" aria-label="Social" className="w-9 h-9 rounded-full border border-white/15 grid place-items-center hover:bg-[var(--brand)] hover:border-[var(--brand)] transition">
+            {[
+              { Icon: Facebook, label: "Facebook", href: "https://web.facebook.com/Rowphotographyng" },
+              { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/rowphotographyng/" },
+              { Icon: X, label: "X", href: "https://x.com/olabodewilson" },
+              { Icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/olabode-rawa-4a256376" },
+            ].map(({ Icon, label, href }) => (
+              <a key={label} href={href} aria-label={label} target="_blank" rel="noreferrer noopener" className="w-9 h-9 rounded-full border border-white/15 grid place-items-center hover:bg-[var(--brand)] hover:border-[var(--brand)] transition">
                 <Icon className="w-4 h-4" />
               </a>
             ))}
