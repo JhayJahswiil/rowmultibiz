@@ -21,8 +21,8 @@ export function Navbar() {
 
   return (
     <header className={cn(
-      "fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-[oklch(0.10_0.005_0)/95] backdrop-blur-md",
-      scrolled || open ? "border-b border-white/10 shadow-lg shadow-black/20" : "border-b border-white/5"
+      "fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-transparent",
+      scrolled || open ? "bg-[var(--ink)]/80 backdrop-blur-md border-b border-white/10" : "border-b border-white/5"
     )}>
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between py-3">
