@@ -53,14 +53,15 @@ function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center justify-center bg-[var(--ink)] text-white overflow-hidden">
+      <section className="relative h-screen flex items-center justify-center bg-[var(--ink)] text-white overflow-hidden">
         <div className="absolute inset-0">
           <img src={heroImg} alt="" className="w-full h-full object-cover opacity-55" loading="eager" />
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--ink)] via-[var(--ink)]/80 to-[var(--ink)]/40" />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--ink)] via-[var(--ink)]/30 to-[var(--ink)]/60" />
         </div>
-        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 py-40 sm:py-48 w-full text-center">
-          <div className="max-w-5xl mx-auto my-12 sm:my-16">
+        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 w-full text-center">
+          <div className="max-w-5xl mx-auto">
+
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
