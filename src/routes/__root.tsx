@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { WhatsAppWidget } from "@/components/WhatsAppWidget";
 import logoAsset from "@/assets/row-logo.png.asset.json";
 import { Toaster } from "@/components/ui/sonner";
 
