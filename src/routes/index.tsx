@@ -178,6 +178,10 @@ function Home() {
       {/* PORTFOLIO TEASER */}
       <PortfolioTeaser />
 
+      {/* TESTIMONIALS */}
+      <Testimonials />
+
+
       {/* CTA BANNER */}
       <section className="bg-brand-gradient py-20">
         <div className="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col lg:flex-row items-center justify-between gap-8 text-white text-center lg:text-left">
