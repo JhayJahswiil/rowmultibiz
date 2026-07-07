@@ -101,9 +101,10 @@ export const TEAM = [
 ] as const;
 
 export const STATS = [
-  { value: "100+", label: "Satisfied Clients" },
-  { value: "100+", label: "Projects Completed" },
-  { value: "10", label: "Accolades Earned" },
+  { value: 100, suffix: "+", label: "Satisfied Clients" },
+  { value: 100, suffix: "+", label: "Projects Completed" },
+  { value: 10, suffix: "", label: "Accolades Earned" },
+  { value: 8, suffix: "", label: "Years of Craft" },
 ] as const;
 
 export const PORTFOLIO_CATEGORIES = [
