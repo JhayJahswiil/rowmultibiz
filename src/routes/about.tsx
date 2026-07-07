@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Award, Sparkles, Zap, Users } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { COMPANY, TEAM, STATS } from "@/lib/site";
+import { CountUp } from "@/components/CountUp";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -111,12 +112,21 @@ function About() {
             ))}
           </div>
           {/* Stats */}
-          <div className="mt-20 grid sm:grid-cols-3 gap-6">
-            {STATS.map((s) => (
-              <div key={s.label} className="p-8 rounded-2xl bg-secondary/50 border border-border text-center">
-                <div className="text-5xl font-display font-bold text-[var(--brand)]">{s.value}</div>
+          <div className="mt-20 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {STATS.map((s, i) => (
+              <motion.div
+                key={s.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: i * 0.08, duration: 0.6 }}
+                className="p-8 rounded-2xl bg-secondary/50 border border-border text-center hover:border-[var(--brand)] transition"
+              >
+                <div className="text-5xl font-display font-bold text-[var(--brand)]">
+                  <CountUp end={s.value} suffix={s.suffix} />
+                </div>
                 <div className="mt-2 text-sm uppercase tracking-widest text-muted-foreground">{s.label}</div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
