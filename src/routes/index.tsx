@@ -4,6 +4,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { SERVICES, COMPANY } from "@/lib/site";
 import { listPortfolio, type PortfolioImage } from "@/lib/portfolio";
+import { Testimonials } from "@/components/Testimonials";
 import heroImg from "@/assets/hero-photographer.jpg";
 import studioImg from "@/assets/about-studio.jpg";
 
