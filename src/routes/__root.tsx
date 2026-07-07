@@ -92,6 +92,7 @@ function RootComponent() {
         <main className="flex-1"><Outlet /></main>
         <Footer />
       </div>
+      <WhatsAppWidget />
       <Toaster richColors position="top-right" />
     </QueryClientProvider>
   );
