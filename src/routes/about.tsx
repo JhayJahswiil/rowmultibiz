@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Award, Sparkles, Zap, Users } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { COMPANY, TEAM, STATS } from "@/lib/site";
+import { CountUp } from "@/components/CountUp";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
