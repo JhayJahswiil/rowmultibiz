@@ -91,7 +91,7 @@ export const COMPANY = {
   short: "ROW",
   address: "Obafemi Awolowo Civic Centre, Fajuyi, Ado-Ekiti",
   location: "Ado-Ekiti, Ekiti State, Nigeria",
-  email: "olabodewilson@gmail.com",
+  email: "rowphotography.com.ng",
   phone: "+234 806 229 8842",
   phoneShort: "08062298842",
   whatsapp: "https://wa.me/2348062298842",
@@ -100,13 +100,14 @@ export const COMPANY = {
 };
 
 export const TEAM = [
-  { name: "Rawa Olabode Wilson", role: "C.E.O / Founder" },
-  { name: "Ayodeji Michael Olajide", role: "Supervisor" },
-  { name: "Kemisola Ajayi", role: "Accountant" },
-  { name: "Johnson Abioye", role: "Receptionist" },
-  { name: "Joshua Isedowo", role: "Dispatcher" },
-  { name: "Oluwatoyin Akinlua", role: "Web Developer" },
-  { name: "Emmanuel Oluwatosin Dada", role: "Studio Photographer" },
+  { name: "Rawa Olabode Wilson", role: "C.E.O / Founder", image: ceoImg.url },
+  { name: "Ayodeji Michael Olajide", role: "Supervisor", image: ayodejiImg.url },
+  { name: "Kemisola Ajayi", role: "Accountant", image: kemisolaImg.url },
+  { name: "Johnson Abioye", role: "Receptionist", image: johnsonImg.url },
+  { name: "Joshua Isedowo", role: "Dispatcher", image: joshuaImg.url },
+  { name: "Oluwatoyin Akinlua", role: "Web Developer", image: oluwatoyinImg.url },
+  { name: "Jahswill Ogbeide", role: "Web Developer", image: jahswillImg.url },
+  { name: "Emmanuel Oluwatosin Dada", role: "Studio Photographer", image: emmanuelImg.url },
 ] as const;
 
 export const STATS = [
