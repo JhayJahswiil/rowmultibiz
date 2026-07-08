@@ -91,14 +91,14 @@ export const COMPANY = {
 };
 
 export const TEAM = [
-  { name: "Rawa Olabode Wilson", role: "C.E.O / Founder", image: ceoImg.url },
-  { name: "Ayodeji Michael Olajide", role: "Supervisor", image: ayodejiImg.url },
-  { name: "Kemisola Ajayi", role: "Accountant", image: kemisolaImg.url },
-  { name: "Johnson Abioye", role: "Receptionist", image: johnsonImg.url },
-  { name: "Joshua Isedowo", role: "Dispatcher", image: joshuaImg.url },
-  { name: "Oluwatoyin Akinlua", role: "Web Developer", image: oluwatoyinImg.url },
-  { name: "Jahswill Ogbeide", role: "Web Developer", image: jahswillImg.url },
-  { name: "Emmanuel Oluwatosin Dada", role: "Studio Photographer", image: emmanuelImg.url },
+  { name: "Rawa Olabode Wilson", role: "C.E.O / Founder", image: "/team-ceo.jpg" },
+  { name: "Ayodeji Michael Olajide", role: "Supervisor", image: "/team-ayodeji.jpg" },
+  { name: "Kemisola Ajayi", role: "Accountant", image: "/team-kemisola.jpg" },
+  { name: "Johnson Abioye", role: "Receptionist", image: "/team-johnson.png" },
+  { name: "Joshua Isedowo", role: "Dispatcher", image: "/team-joshua.jpg" },
+  { name: "Oluwatoyin Akinlua", role: "Web Developer", image: "/team-oluwatoyin.jpg" },
+  { name: "Jahswill Ogbeide", role: "Web Developer", image: "/team-jahswill.jpg" },
+  { name: "Emmanuel Oluwatosin Dada", role: "Studio Photographer", image: "/team-emmanuel.jpg" },
 ] as const;
 
 export const STATS = [
