@@ -2,15 +2,6 @@ import {
   Camera, Palette, PenTool, Film, Globe, GraduationCap, Printer, Layers,
 } from "lucide-react";
 
-import ceoImg from "@/assets/team/IMG_20210509_181946_482-2048x2048.jpg.asset.json";
-import ayodejiImg from "@/assets/team/Ayodeji_michael.jpg.asset.json";
-import kemisolaImg from "@/assets/team/Kemisola_Ajayi.jpg.asset.json";
-import johnsonImg from "@/assets/team/Johnson_Abioye.png.asset.json";
-import joshuaImg from "@/assets/team/Joshua_Isedowo.jpg.asset.json";
-import oluwatoyinImg from "@/assets/team/Oluwatoyin_Akinlua.jpg.asset.json";
-import emmanuelImg from "@/assets/team/Emmanuel_Oluatosi.jpg.asset.json";
-import jahswillImg from "@/assets/team/Passport.jpg.asset.json";
-
 export const SERVICES = [
   {
     slug: "photography",
