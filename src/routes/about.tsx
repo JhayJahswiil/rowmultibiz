@@ -104,11 +104,7 @@ function About() {
             {TEAM.map((m, i) => (
               <motion.div key={m.name} initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="group">
                 <div className="aspect-[4/5] rounded-2xl overflow-hidden relative bg-secondary" style={{ background: `linear-gradient(160deg, oklch(0.45 0.20 ${hueFor(m.name)}), oklch(0.16 0.005 0))` }}>
-                  {m.image ? (
-                    <img src={m.image} alt={m.name} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  ) : (
-                    <div className="absolute inset-0 grid place-items-center text-white/40 text-6xl font-display font-bold">{m.name.split(" ").map(w=>w[0]).join("")}</div>
-                  )}
+                  <img src={m.image} alt={m.name} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <h3 className="mt-5 text-xl font-bold">{m.name}</h3>
                 <p className="text-sm text-muted-foreground">{m.role}</p>

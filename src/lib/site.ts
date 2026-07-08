@@ -2,15 +2,6 @@ import {
   Camera, Palette, PenTool, Film, Globe, GraduationCap, Printer, Layers,
 } from "lucide-react";
 
-import ceoImg from "@/assets/team/IMG_20210509_181946_482-2048x2048.jpg.asset.json";
-import ayodejiImg from "@/assets/team/Ayodeji_michael.jpg.asset.json";
-import kemisolaImg from "@/assets/team/Kemisola_Ajayi.jpg.asset.json";
-import johnsonImg from "@/assets/team/Johnson_Abioye.png.asset.json";
-import joshuaImg from "@/assets/team/Joshua_Isedowo.jpg.asset.json";
-import oluwatoyinImg from "@/assets/team/Oluwatoyin_Akinlua.jpg.asset.json";
-import emmanuelImg from "@/assets/team/Emmanuel_Oluatosi.jpg.asset.json";
-import jahswillImg from "@/assets/team/Passport.jpg.asset.json";
-
 export const SERVICES = [
   {
     slug: "photography",
@@ -100,14 +91,14 @@ export const COMPANY = {
 };
 
 export const TEAM = [
-  { name: "Rawa Olabode Wilson", role: "C.E.O / Founder", image: ceoImg.url },
-  { name: "Ayodeji Michael Olajide", role: "Supervisor", image: ayodejiImg.url },
-  { name: "Kemisola Ajayi", role: "Accountant", image: kemisolaImg.url },
-  { name: "Johnson Abioye", role: "Receptionist", image: johnsonImg.url },
-  { name: "Joshua Isedowo", role: "Dispatcher", image: joshuaImg.url },
-  { name: "Oluwatoyin Akinlua", role: "Web Developer", image: oluwatoyinImg.url },
-  { name: "Jahswill Ogbeide", role: "Web Developer", image: jahswillImg.url },
-  { name: "Emmanuel Oluwatosin Dada", role: "Studio Photographer", image: emmanuelImg.url },
+  { name: "Rawa Olabode Wilson", role: "C.E.O / Founder", image: "/team-ceo.jpg" },
+  { name: "Ayodeji Michael Olajide", role: "Supervisor", image: "/team-ayodeji.jpg" },
+  { name: "Kemisola Ajayi", role: "Accountant", image: "/team-kemisola.jpg" },
+  { name: "Johnson Abioye", role: "Receptionist", image: "/team-johnson.png" },
+  { name: "Joshua Isedowo", role: "Dispatcher", image: "/team-joshua.jpg" },
+  { name: "Oluwatoyin Akinlua", role: "Web Developer", image: "/team-oluwatoyin.jpg" },
+  { name: "Jahswill Ogbeide", role: "Web Developer", image: "/team-jahswill.jpg" },
+  { name: "Emmanuel Oluwatosin Dada", role: "Studio Photographer", image: "/team-emmanuel.jpg" },
 ] as const;
 
 export const STATS = [
