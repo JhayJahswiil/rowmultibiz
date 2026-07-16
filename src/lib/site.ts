@@ -82,7 +82,7 @@ export const COMPANY = {
   short: "ROW",
   address: "Obafemi Awolowo Civic Centre, Fajuyi, Ado-Ekiti",
   location: "Ado-Ekiti, Ekiti State, Nigeria",
-  email: "rowphotography.com.ng",
+  email: "rowphotographyng@gmail.com",
   phone: "+234 806 229 8842",
   phoneShort: "08062298842",
   whatsapp: "https://wa.me/2348062298842",
